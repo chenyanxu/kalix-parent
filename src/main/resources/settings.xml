@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--copy this file to m2_home/conf -->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <pluginGroups>
+        <!-- pluginGroup
+         | Specifies a further group identifier to use for plugin lookup.
+        <pluginGroup>com.your.plugins</pluginGroup>
+        -->
+    </pluginGroups>
+
+    <!-- proxies
+     | This is a list of proxies which can be used on this machine to connect to the network.
+     | Unless otherwise specified (by system property or command-line switch), the first proxy
+     | specification in this list marked as active will be used.
+     |-->
+    <proxies>
+        <proxy>
+            <id>my-proxy</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>172.18.82.10</host>
+            <port>808</port>
+            <nonProxyHosts>localhost|127.0.0.1</nonProxyHosts>
+        </proxy>
+    </proxies>
+
+    <servers>
+        <server>
+            <id>private-nexus-library-releases</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+        <server>
+            <id>private-nexus-library-snapshots</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+    </servers>
+
+    <!-- mirrors
+     | This is a list of mirrors to be used in downloading artifacts from remote repositories.
+     |
+     | It works like this: a POM may declare a repository to use in resolving certain artifacts.
+     | However, this repository may have problems with heavy traffic at times, so people have mirrored
+     | it to several places.
+     |
+     | That repository definition will have a unique id, so we can create a mirror reference for that
+     | repository, to be used as an alternate download site. The mirror site will be the preferred
+     | server for that repository.
+     |-->
+    <mirrors>
+        <!-- mirror
+         | Specifies a repository mirror site to use instead of a given repository. The repository that
+         | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used
+         | for inheritance and direct lookup purposes, and must be unique across the set of mirrors.
+         |
+        <mirror>
+          <id>mirrorId</id>
+          <mirrorOf>repositoryId</mirrorOf>
+          <name>Human Readable Name for this Mirror.</name>
+          <url>http://my.repository.com/repo/path</url>
+        </mirror>
+         -->
+        <!--<mirror>-->
+            <!--<id>nexus3-kalix-com</id>-->
+            <!--<mirrorOf>*</mirrorOf>-->
+            <!--<name>Nexus Mirror Remote</name>-->
+            <!--<url>http://nexus3.kalix.com/repository/maven-public/</url>-->
+        <!--</mirror>-->
+        <mirror>
+            <id>nexus2-remote</id>
+            <mirrorOf>*</mirrorOf>
+            <name>Nexus Mirror Remote</name>
+            <url>http://172.18.82.10:8081/nexus/content/groups/public/</url>
+        </mirror>
+    </mirrors>
+    <profiles>
+        <!-- profile
+         | Specifies a set of introductions to the build process, to be activated using one or more of the
+         | mechanisms described above. For inheritance purposes, and to activate profiles via <activatedProfiles/>
+         | or the command line, profiles have to have an ID that is unique.
+         |
+         | An encouraged best practice for profile identification is to use a consistent naming convention
+         | for profiles, such as 'env-dev', 'env-test', 'env-production', 'user-jdcasey', 'user-brett', etc.
+         | This will make it more intuitive to understand what the set of introduced profiles is attempting
+         | to accomplish, particularly when you only have a list of profile id's for debug.
+         |
+         | This profile example uses the JDK version to trigger activation, and provides a JDK-specific repo.
+        <profile>
+          <id>jdk-1.4</id>
+
+          <activation>
+            <jdk>1.4</jdk>
+          </activation>
+
+          <repositories>
+            <repository>
+              <id>jdk14</id>
+              <name>Repository for JDK 1.4 builds</name>
+              <url>http://www.myhost.com/maven/jdk14</url>
+              <layout>default</layout>
+              <snapshotPolicy>always</snapshotPolicy>
+            </repository>
+          </repositories>
+        </profile>
+        -->
+
+        <!--
+         | Here is another profile, activated by the system property 'target-env' with a value of 'dev',
+         | which provides a specific path to the Tomcat instance. To use this, your plugin configuration
+         | might hypothetically look like:
+         |
+         | ...
+         | <plugin>
+         |   <groupId>org.myco.myplugins</groupId>
+         |   <artifactId>myplugin</artifactId>
+         |
+         |   <configuration>
+         |     <tomcatLocation>${tomcatPath}</tomcatLocation>
+         |   </configuration>
+         | </plugin>
+         | ...
+         |
+         | NOTE: If you just wanted to inject this configuration whenever someone set 'target-env' to
+         |       anything, you could just leave off the <value/> inside the activation-property.
+         |
+        <profile>
+          <id>env-dev</id>
+
+          <activation>
+            <property>
+              <name>target-env</name>
+              <value>dev</value>
+            </property>
+          </activation>
+
+          <properties>
+            <tomcatPath>/path/to/tomcat/instance</tomcatPath>
+          </properties>
+        </profile>
+        -->
+        <!-- activeProfiles
+         | List of profiles that are active for all builds.
+         |
+        <activeProfiles>
+          <activeProfile>alwaysActiveProfile</activeProfile>
+          <activeProfile>anotherAlwaysActiveProfile</activeProfile>
+        </activeProfiles>
+        -->
+        <!--profile>
+            <id>nexus-local</id>
+            <repositories>
+                <repository>
+                    <id>local-nexus</id>
+                    <url>http://localhost:8081/nexus/content/groups/public</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>local-nexus</id>
+                    <name>Maven Plugin Repository</name>
+                    <url>http://localhost:8081/nexus/content/groups/public</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>-->
+         <profile>
+            <id>jdk-1.8</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <jdk>1.8</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+        <profile>
+            <id>linux-env</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <os>
+                    <family>Linux</family>
+                </os>
+            </activation>
+            <properties>
+                <karaf.path>~/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
+                <maven.path>~/java-develop/tools/apache-maven-${maven.version}</maven.path>
+            </properties>
+        </profile>
+        <profile>
+            <id>windows-env</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <properties>
+                <karaf.path>d:/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
+                <maven.path>d:/java-develop/tools/apache-maven-${maven.version}</maven.path>
+            </properties>
+        </profile>
+        <profile>
+            <id>development-mysql</id>
+            <properties>
+                <db.name>mysql</db.name>
+                <db.datasource>jdbc/mysqlds</db.datasource>
+                <db.datasourceClass>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</db.datasourceClass>
+                <db.connectionURL>jdbc:mysql://localhost:3306/kalix</db.connectionURL>
+                <db.username>root</db.username>
+                <db.password>1234</db.password>
+            </properties>
+        </profile>
+        <profile>
+            <id>production-postgresql</id>
+            <properties>
+                <db.name>postgres</db.name>
+                <db.datasource>jdbc/postgres</db.datasource>
+                <db.driver>org.postgresql.Driver</db.driver>
+                <db.datasourceClass>org.postgresql.jdbc2.optional.PoolingDataSource</db.datasourceClass>
+                <db.connectionURL>jdbc:postgresql://localhost:5432/kalix</db.connectionURL>
+                <db.username>postgres</db.username>
+                <db.password>1234</db.password>
+            </properties>
+        </profile>
+         <!--<profile>-->
+            <!--<id>nexus-remote</id>-->
+            <!--<repositories>-->
+                <!--<repository>-->
+                    <!--<id>remote-nexus</id>-->
+                    <!--<url>http://nexus3.kalix.com/repository/maven-public/</url>-->
+                    <!--&lt;!&ndash;<url>http://localhost:8081/repository/maven-public/</url>&ndash;&gt;-->
+                    <!--<snapshots>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</snapshots>-->
+                <!--</repository>-->
+            <!--</repositories>-->
+            <!--<pluginRepositories>-->
+                <!--<pluginRepository>-->
+                    <!--<snapshots>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</snapshots>-->
+                    <!--<id>remote-nexus</id>-->
+                    <!--<name>Maven Plugin Repository</name>-->
+                    <!--<url>http://nexus3.kalix.com/repository/maven-public/</url>-->
+                    <!--&lt;!&ndash;<url>http://localhost:8081/repository/maven-public/</url>&ndash;&gt;-->
+                <!--</pluginRepository>-->
+            <!--</pluginRepositories>-->
+        <!--</profile>-->
+    </profiles>
+    <activeProfiles>
+        <!--<activeProfile>nexus-remote</activeProfile>-->
+        <activeProfile>production-postgresql</activeProfile>
+    </activeProfiles>
+</settings>
