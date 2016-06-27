@@ -50,6 +50,8 @@
         <maven-source-plugin.version>3.0.0</maven-source-plugin.version>
         <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
         <maven-site-plugin.version>3.5</maven-site-plugin.version>
+        <openjpa-maven-plugin.version>2.4.0</openjpa-maven-plugin.version>
+        <openjpa.version>2.4.0.Release</openjpa.version>
 
         <depends-maven-plugin.version>1.3.1</depends-maven-plugin.version>
         <build-helper-maven-plugin.version>1.10</build-helper-maven-plugin.version>
@@ -306,6 +308,28 @@
                     <groupId>org.apache.openjpa</groupId>
                     <artifactId>openjpa-maven-plugin</artifactId>
                     <version>${openjpa-maven-plugin.version}</version>
+                    <configuration>
+                        <includes>**/entities/*.class</includes>
+                        <addDefaultConstructor>true</addDefaultConstructor>
+                        <enforcePropertyRestrictions>true</enforcePropertyRestrictions>
+                        <persistenceXmlFile>${project.build.outputDirectory}/META-INF/persistence-jpa.xml</persistenceXmlFile>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>enhancer</id>
+                            <phase>process-classes</phase>
+                            <goals>
+                                <goal>enhance</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.openjpa</groupId>
+                            <artifactId>openjpa</artifactId>
+                            <version>${openjpa.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
