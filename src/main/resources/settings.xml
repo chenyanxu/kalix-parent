@@ -18,7 +18,7 @@
     <proxies>
         <proxy>
             <id>my-proxy</id>
-            <active>true</active>
+            <active>false</active>
             <protocol>http</protocol>
             <host>172.18.82.10</host>
             <port>808</port>

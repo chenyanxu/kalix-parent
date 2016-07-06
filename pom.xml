@@ -264,6 +264,22 @@
                                         </if>
                                     </then>
                                 </if>
+                                <if>
+                                    <equals arg1="${project.artifactId}" arg2="framework-core-etc" />
+                                    <then>
+                                        <if>
+                                            <available file="${karaf.etc.path}" type="dir"></available>
+                                            <then>
+                                                <copy todir="d:/">
+                                                    <fileset dir="src/main/resources"/>
+                                                </copy>
+                                            </then>
+                                            <else>
+                                                <echo>Karaf deploy path does not exist</echo>
+                                            </else>
+                                        </if>
+                                    </then>
+                                </if>
                             </target>
                         </configuration>
                     </execution>
