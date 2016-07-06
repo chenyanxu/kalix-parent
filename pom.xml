@@ -270,7 +270,7 @@
                                         <if>
                                             <available file="${karaf.etc.path}" type="dir"></available>
                                             <then>
-                                                <copy todir="d:/">
+                                                <copy todir="${karaf.etc.path}">
                                                     <fileset dir="src/main/resources"/>
                                                 </copy>
                                             </then>
