@@ -1,0 +1,15 @@
+---
+pipeline: "workflows/maven/CanaryReleaseStageAndApprovePromote/Jenkinsfile"
+buildName: "trycamel"
+codeReview: false
+links:
+  Git: "http://gogs.apps.kalix.com/gogsadmin/trycamel.git"
+  Job: "http://jenkins.apps.kalix.com/job/trycamel"
+  Production: "http://172.30.155.194:80/kubernetes/pods?namespace=develop-production"
+  Staging: "http://172.30.155.194:80/kubernetes/pods?namespace=develop-staging"
+  Testing: "http://172.30.155.194:80/kubernetes/pods?namespace=develop-testing"
+environments:
+  Testing: "develop-testing"
+  Staging: "develop-staging"
+  Production: "develop-production"
+useLocalFlow: true
