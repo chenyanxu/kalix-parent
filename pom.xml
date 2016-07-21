@@ -70,7 +70,7 @@
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- fabric8 property-->
-        <fabric8.maven.plugin.version>3.0.25</fabric8.maven.plugin.version>
+        <fabric8.maven.plugin.version>3.0.33</fabric8.maven.plugin.version>
         <fabric8.version>2.2.142</fabric8.version>
 
 
@@ -370,7 +370,7 @@
                     <execution>
                         <goals>
                             <goal>resource</goal>
-                            <goal>build</goal>
+                            <!--<goal>build</goal>-->
                         </goals>
                     </execution>
                 </executions>
@@ -439,12 +439,12 @@
         <repository>
             <id>private-nexus-library-releases</id>
             <name>private-nexus-library-releases</name>
-            <url>http:nexus.apps.kalix.com/repository/maven-releases/</url>
+            <url>http://nexus.apps.kalix.com/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>private-nexus-library-snapshots</id>
             <name>private-nexus-library-snapshots</name>
-            <url>http://nexus.apps.kalix.com/repository/maven-snapshots/</url>
+            <url>http://nexus.apps.kalix.com/content/repositories/snapshots/</url>
         </snapshotRepository>
         <site>
       <id>website</id>
