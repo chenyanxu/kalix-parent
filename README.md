@@ -1,1 +1,2 @@
 # kalix-parent
+only test
