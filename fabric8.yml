@@ -1,0 +1,13 @@
+---
+pipeline: "workflows/maven/Deploy/Jenkinsfile"
+buildName: "kalix-parent"
+codeReview: false
+links:
+  Backlog: "http://taiga.apps.kalix.com/project/admin-kalix-parent-1/backlog"
+  Current: "http://172.30.155.194:80/kubernetes/pods?namespace=develop"
+  Git: "https://github.com/minikiller/kalix-parent.git"
+  Job: "http://jenkins.apps.kalix.com/job/kalix-parent"
+  Team: "http://taiga.apps.kalix.com/project/admin-kalix-parent-1/team"
+environments:
+  Current: "develop"
+useLocalFlow: true
