@@ -2,11 +2,11 @@
 buildName: "kalix-parent"
 codeReview: false
 links:
-  Backlog: "http://taiga.apps.kalix.com/project/admin-kalix-parent-2/backlog"
+  Backlog: "http://taiga.apps.kalix.com/project/admin-kalix-parent/backlog"
   Current: "http://172.30.82.182:80/kubernetes/pods?namespace=develop"
   Git: "https://github.com/minikiller/kalix-parent.git"
   Job: "http://jenkins.apps.kalix.com/job/kalix-parent"
-  Team: "http://taiga.apps.kalix.com/project/admin-kalix-parent-2/team"
+  Team: "http://taiga.apps.kalix.com/project/admin-kalix-parent/team"
 environments:
   Current: "develop"
 useLocalFlow: true
