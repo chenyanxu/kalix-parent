@@ -442,7 +442,7 @@
             <url>http://nexus.apps.kalix.com/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
-            <id>local-nexus</id>
+            <id>private-nexus-library-snapshots</id>
             <name>private-nexus-library-snapshots</name>
             <url>http://nexus.apps.kalix.com/content/repositories/snapshots/</url>
         </snapshotRepository>
