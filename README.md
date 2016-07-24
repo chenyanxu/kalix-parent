@@ -63,7 +63,7 @@ plugin action:
 - auto deploy bundle file to karaf/deploy folder
 - auto deploy setting.xml to maven/conf folder
 - auto deploy *.cfg to karaf/ext folder
-***
+#
 
 	<plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
