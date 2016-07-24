@@ -60,10 +60,11 @@ plugin for compile a project as a bundle,add some properties to MANIFEST.MF file
 
 plugin action:
 
-- auto deploy bundle file to karaf/deploy folder
-- auto deploy setting.xml to maven/conf folder
-- auto deploy *.cfg to karaf/ext folder
-#
+auto deploy bundle file to karaf/deploy folder
+
+auto deploy setting.xml to maven/conf folder
+
+auto deploy *.cfg to karaf/ext folder
 
 	<plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
