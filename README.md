@@ -185,7 +185,7 @@ The setting.xml file will auto deploy to ${maven.path}/conf if the maven.path co
 		<name>Nexus Mirror Remote</name>
 		<url>http://172.18.82.10:8081/nexus/content/groups/public/</url>
 	</mirror>
-**system evn profile
+**system evn profile**
 
 	<profile>
 	    <id>linux-env</id>
