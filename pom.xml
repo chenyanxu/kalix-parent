@@ -251,34 +251,20 @@
                                             </else>
                                         </if>
                                     </then>
-                                </if>
-                                <if>
-                                    <available file="${maven.conf.path}" type="dir"></available>
-                                    <then>
+                                    <else>
                                         <if>
-                                            <available file="src/main/resources/settings.xml"/>
+                                            <equals arg1="${project.artifactId}" arg2="kalix-parent" />
                                             <then>
-                                                <copy file="src/main/resources/settings.xml"
-                                                      todir="${maven.conf.path}"/>
+                                                <if>
+                                                    <available file="src/main/resources/settings.xml"/>
+                                                    <then>
+                                                        <copy file="src/main/resources/settings.xml"
+                                                              todir="${maven.conf.path}"/>
+                                                    </then>
+                                                </if>
                                             </then>
                                         </if>
-                                    </then>
-                                </if>
-                                <if>
-                                    <equals arg1="${project.artifactId}" arg2="framework-core-etc" />
-                                    <then>
-                                        <if>
-                                            <available file="${karaf.etc.path}" type="dir"></available>
-                                            <then>
-                                                <copy todir="${karaf.etc.path}">
-                                                    <fileset dir="src/main/resources"/>
-                                                </copy>
-                                            </then>
-                                            <else>
-                                                <echo>Karaf deploy path does not exist</echo>
-                                            </else>
-                                        </if>
-                                    </then>
+                                    </else>
                                 </if>
                             </target>
                         </configuration>
@@ -347,11 +333,6 @@
                         </dependency>
                     </dependencies>
                 </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>native2ascii-maven-plugin</artifactId>
-                    <version>${native2ascii-maven-plugin.version}</version>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -367,4 +348,30 @@
             <url>http://nexus3.kalix.com/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
+    <profiles>
+        <profile>
+            <id>maven-path-win</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <properties>
+                <maven.path>d:/java-develop/tools/apache-maven-${maven.version}</maven.path>
+            </properties>
+        </profile>
+        <profile>
+            <id>maven-path-linux</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <os>
+                    <family>Linux</family>
+                </os>
+            </activation>
+            <properties>
+                <maven.path>~/java-develop/tools/apache-maven-${maven.version}</maven.path>
+            </properties>
+        </profile>
+    </profiles>
 </project>
