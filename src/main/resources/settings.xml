@@ -194,7 +194,6 @@
             </activation>
             <properties>
                 <karaf.path>~/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
-                <maven.path>~/java-develop/tools/apache-maven-${maven.version}</maven.path>
             </properties>
         </profile>
         <profile>
@@ -207,7 +206,6 @@
             </activation>
             <properties>
                 <karaf.path>d:/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
-                <maven.path>d:/java-develop/tools/apache-maven-${maven.version}</maven.path>
             </properties>
         </profile>
         <profile>
