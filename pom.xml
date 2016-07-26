@@ -66,6 +66,7 @@
         <ariesBlueprintAnnotationImplVersion>1.0.0</ariesBlueprintAnnotationImplVersion>
         <log4j.version>1.2.17</log4j.version>
         <ant.contrib.version>20020829</ant.contrib.version>
+        <ant.version>1.9.4</ant.version>
 
         <!--bundle child property-->
         <bundle.symbolicName>must_define_in_child_module</bundle.symbolicName>
@@ -230,7 +231,7 @@
                             <target>
                                 <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
                                 <if>
-                                    <equals arg1="${project.packaging}" arg2="bundle" />
+                                    <equals arg1="${project.packaging}" arg2="bundle"/>
                                     <then>
                                         <if>
                                             <available file="target/${project.artifactId}-${project.version}.jar"/>
@@ -241,30 +242,35 @@
                                                         <copy file="target/${project.artifactId}-${project.version}.jar"
                                                               todir="${karaf.deploy.path}"/>
                                                     </then>
-                                                    <else>
-                                                        <echo>Karaf deploy path does not exist</echo>
-                                                    </else>
                                                 </if>
                                             </then>
-                                            <else>
-                                                <echo>The file does not exist</echo>
-                                            </else>
                                         </if>
                                     </then>
-                                    <else>
+                                </if>
+                                <if>
+                                    <equals arg1="${project.artifactId}" arg2="kalix-parent"/>
+                                    <then>
                                         <if>
-                                            <equals arg1="${project.artifactId}" arg2="kalix-parent" />
+                                            <available file="src/main/resources/settings.xml"/>
                                             <then>
-                                                <if>
-                                                    <available file="src/main/resources/settings.xml"/>
-                                                    <then>
-                                                        <copy file="src/main/resources/settings.xml"
-                                                              todir="${maven.conf.path}"/>
-                                                    </then>
-                                                </if>
+                                                <copy file="src/main/resources/settings.xml"
+                                                      todir="${maven.conf.path}"/>
                                             </then>
                                         </if>
-                                    </else>
+                                    </then>
+                                </if>
+                                <if>
+                                    <equals arg1="${project.artifactId}" arg2="framework-core-etc"/>
+                                    <then>
+                                        <if>
+                                            <available file="${karaf.etc.path}" type="dir"></available>
+                                            <then>
+                                                <copy todir="${karaf.etc.path}">
+                                                    <fileset dir="src/main/resources"/>
+                                                </copy>
+                                            </then>
+                                        </if>
+                                    </then>
                                 </if>
                             </target>
                         </configuration>
@@ -314,7 +320,8 @@
                         <includes>**/entities/*.class</includes>
                         <addDefaultConstructor>true</addDefaultConstructor>
                         <enforcePropertyRestrictions>true</enforcePropertyRestrictions>
-                        <persistenceXmlFile>${project.build.outputDirectory}/META-INF/persistence-jpa.xml</persistenceXmlFile>
+                        <persistenceXmlFile>${project.build.outputDirectory}/META-INF/persistence-jpa.xml
+                        </persistenceXmlFile>
                     </configuration>
                     <executions>
                         <execution>
