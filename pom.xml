@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -72,7 +71,24 @@
         <bundle.symbolicName>must_define_in_child_module</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- fabric8 property-->
+        <fabric8.maven.plugin.version>3.0.33</fabric8.maven.plugin.version>
+        <fabric8.version>2.2.142</fabric8.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- import fabric8 platform bom first -->
+            <dependency>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-project-bom-with-platform-deps</artifactId>
+                <version>${fabric8.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <resources>
@@ -85,9 +101,15 @@
                 <includes>
                     <include>**/*-rest.xml</include>
                 </includes>
-                <filtering>false</filtering>
             </resource>
         </resources>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav-jackrabbit</artifactId>
+                <version>2.10</version>
+            </extension>
+        </extensions>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -123,7 +145,7 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>${maven-dependency-plugin.version}</version>
             </plugin>
-            <!--对js和css做压缩和混淆-->
+            <!--?js?css??????-->
             <!--<plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>yuicompressor-maven-plugin</artifactId>
@@ -161,9 +183,7 @@
                     <instructions>
                         <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
                         <Bundle-Version>${project.version}</Bundle-Version>
-                        <Export-Package>
-                            ${bundle.namespace}.*;version="${project.version}"
-                        </Export-Package>
+                        <Export-Package>${bundle.namespace}.*;version="${project.version}"</Export-Package>
                         <Import-Package>*</Import-Package>
                         <_include>-osgi.bnd</_include>
                     </instructions>
@@ -242,35 +262,30 @@
                                                         <copy file="target/${project.artifactId}-${project.version}.jar"
                                                               todir="${karaf.deploy.path}"/>
                                                     </then>
+                                                    <else>
+                                                        <echo>Karaf deploy path does not exist</echo>
+                                                    </else>
+                                                </if>
+                                            </then>
+                                            <else>
+                                                <echo>The file does not exist</echo>
+                                            </else>
+                                        </if>
+                                    </then>
+                                    <else>
+                                        <if>
+                                            <equals arg1="${project.artifactId}" arg2="kalix-parent"/>
+                                            <then>
+                                                <if>
+                                                    <available file="src/main/resources/settings.xml"/>
+                                                    <then>
+                                                        <copy file="src/main/resources/settings.xml"
+                                                              todir="${maven.conf.path}"/>
+                                                    </then>
                                                 </if>
                                             </then>
                                         </if>
-                                    </then>
-                                </if>
-                                <if>
-                                    <equals arg1="${project.artifactId}" arg2="kalix-parent"/>
-                                    <then>
-                                        <if>
-                                            <available file="src/main/resources/settings.xml"/>
-                                            <then>
-                                                <copy file="src/main/resources/settings.xml"
-                                                      todir="${maven.conf.path}"/>
-                                            </then>
-                                        </if>
-                                    </then>
-                                </if>
-                                <if>
-                                    <equals arg1="${project.artifactId}" arg2="framework-core-etc"/>
-                                    <then>
-                                        <if>
-                                            <available file="${karaf.etc.path}" type="dir"></available>
-                                            <then>
-                                                <copy todir="${karaf.etc.path}">
-                                                    <fileset dir="src/main/resources"/>
-                                                </copy>
-                                            </then>
-                                        </if>
-                                    </then>
+                                    </else>
                                 </if>
                             </target>
                         </configuration>
@@ -309,6 +324,20 @@
                     </hibernatetool>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <version>${fabric8.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>resource</goal>
+                            <!--<goal>build</goal>-->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
         <pluginManagement>
             <plugins>
@@ -343,6 +372,20 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <configuration>
+                    <detectLinks>true</detectLinks>
+                    <detectJavaApiLink>true</detectJavaApiLink>
+                    <linksource>true</linksource>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
     <distributionManagement>
         <repository>
             <id>private-nexus-library-releases</id>
@@ -354,12 +397,15 @@
             <name>private-nexus-library-snapshots</name>
             <url>http://nexus3.kalix.com/repository/maven-snapshots/</url>
         </snapshotRepository>
+        <site>
+            <id>website</id>
+            <url>dav:http://content-repository/sites/${project.groupId}/${project.artifactId}/${project.version}</url>
+        </site>
     </distributionManagement>
     <profiles>
         <profile>
             <id>maven-path-win</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
                 <os>
                     <family>Windows</family>
                 </os>
@@ -371,7 +417,6 @@
         <profile>
             <id>maven-path-linux</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
                 <os>
                     <family>Linux</family>
                 </os>
