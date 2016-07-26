@@ -1,0 +1,11 @@
+---
+pipeline: "workflows/maven/Deploy/Jenkinsfile"
+buildName: "kalix-parent"
+codeReview: false
+links:
+  Current: "http://172.30.221.109:80/kubernetes/pods?namespace=develop"
+  Git: "https://github.com/chenyanxu/kalix-parent.git"
+  Job: "http://jenkins.apps.kalix.com/job/kalix-parent"
+environments:
+  Current: "develop"
+useLocalFlow: true
