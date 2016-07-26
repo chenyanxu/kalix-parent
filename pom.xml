@@ -331,7 +331,7 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>resource</goal>
+                            <!--<goal>resource</goal>-->
                             <!--<goal>build</goal>-->
                         </goals>
                     </execution>
