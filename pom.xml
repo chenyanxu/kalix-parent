@@ -73,21 +73,6 @@
         <!-- fabric8 property-->
         <fabric8.maven.plugin.version>3.0.33</fabric8.maven.plugin.version>
         <fabric8.version>2.2.142</fabric8.version>
-
-
-        <dockerimage>${docker.registryPrefix}fabric8/${project.artifactId}:${project.version}</dockerimage>
-        <docker.image>${dockerimage}</docker.image>
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <docker.from>fabric8/java</docker.from>
-        <docker.port.container.jolokia>8778</docker.port.container.jolokia>
-        <fabric8.label.group>quickstarts</fabric8.label.group>
-        <camel.version>2.15.2</camel.version>
-        <docker.env.MAIN>org.apache.camel.cdi.Main</docker.env.MAIN>
-        <version.compiler.plugin>2.3.1</version.compiler.plugin>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <docker.assemblyDescriptorRef>artifact-with-dependencies</docker.assemblyDescriptorRef>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <docker.maven.plugin.version>0.11.3</docker.maven.plugin.version>
     </properties>
     
     <dependencyManagement>
