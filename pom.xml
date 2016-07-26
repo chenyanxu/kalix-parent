@@ -398,12 +398,12 @@
   </reporting>
     <distributionManagement>
         <repository>
-            <id>nexus</id>
+            <id>private-nexus-library-releases</id>
             <name>private-nexus-library-releases</name>
             <url>http:nexus3.kalix.com/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>nexus-local</id>
+            <id>private-nexus-library-snapshots</id>
             <name>private-nexus-library-snapshots</name>
             <url>http://nexus3.kalix.com/repository/maven-snapshots/</url>
         </snapshotRepository>
