@@ -262,30 +262,35 @@
                                                         <copy file="target/${project.artifactId}-${project.version}.jar"
                                                               todir="${karaf.deploy.path}"/>
                                                     </then>
-                                                    <else>
-                                                        <echo>Karaf deploy path does not exist</echo>
-                                                    </else>
                                                 </if>
                                             </then>
-                                            <else>
-                                                <echo>The file does not exist</echo>
-                                            </else>
                                         </if>
                                     </then>
-                                    <else>
+                                </if>
+                                <if>
+                                    <equals arg1="${project.artifactId}" arg2="kalix-parent"/>
+                                    <then>
                                         <if>
-                                            <equals arg1="${project.artifactId}" arg2="kalix-parent"/>
+                                            <available file="src/main/resources/settings.xml"/>
                                             <then>
-                                                <if>
-                                                    <available file="src/main/resources/settings.xml"/>
-                                                    <then>
-                                                        <copy file="src/main/resources/settings.xml"
-                                                              todir="${maven.conf.path}"/>
-                                                    </then>
-                                                </if>
+                                                <copy file="src/main/resources/settings.xml"
+                                                      todir="${maven.conf.path}"/>
                                             </then>
                                         </if>
-                                    </else>
+                                    </then>
+                                </if>
+                                <if>
+                                    <equals arg1="${project.artifactId}" arg2="framework-core-etc"/>
+                                    <then>
+                                        <if>
+                                            <available file="${karaf.etc.path}" type="dir"></available>
+                                            <then>
+                                                <copy todir="${karaf.etc.path}">
+                                                    <fileset dir="src/main/resources"/>
+                                                </copy>
+                                            </then>
+                                        </if>
+                                    </then>
                                 </if>
                             </target>
                         </configuration>
@@ -376,6 +381,7 @@
     <reporting>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.3</version>
                 <configuration>
