@@ -390,12 +390,12 @@
         <repository>
             <id>private-nexus-library-releases</id>
             <name>private-nexus-library-releases</name>
-            <url>http:nexus3.kalix.com/repository/maven-releases/</url>
+            <url>http://nexus.apps.kalix.com/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>private-nexus-library-snapshots</id>
             <name>private-nexus-library-snapshots</name>
-            <url>http://nexus3.kalix.com/repository/maven-snapshots/</url>
+            <url>http://nexus.apps.kalix.com/content/repositories/snapshots/</url>
         </snapshotRepository>
         <site>
             <id>website</id>
