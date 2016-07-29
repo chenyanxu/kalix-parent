@@ -75,6 +75,9 @@
         <!-- fabric8 property-->
         <fabric8.maven.plugin.version>3.0.33</fabric8.maven.plugin.version>
         <fabric8.version>2.2.142</fabric8.version>
+
+        <!--httpclient property-->
+        <httpclient.version>4.5.2</httpclient.version>
     </properties>
 
     <dependencyManagement>
