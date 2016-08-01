@@ -58,9 +58,9 @@
         <hibernate3-maven-plugin.version>3.0</hibernate3-maven-plugin.version>
         <yuicompressor-maven-plugin.version>1.4.0</yuicompressor-maven-plugin.version>
         <native2ascii-maven-plugin.version>1.0-beta-1</native2ascii-maven-plugin.version>
-
         <cglib.range>[2,3)</cglib.range>
         <!-- Aries Blueprint Versions -->
+
         <ariesBlueprintAnnotationApiVersion>1.0.0</ariesBlueprintAnnotationApiVersion>
         <ariesBlueprintAnnotationImplVersion>1.0.0</ariesBlueprintAnnotationImplVersion>
         <log4j.version>1.2.17</log4j.version>
