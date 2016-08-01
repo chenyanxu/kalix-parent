@@ -1,5 +1,4 @@
 ---
-pipeline: "workflows/maven/Deploy/Jenkinsfile"
 buildName: "kalix-parent"
 codeReview: false
 links:
