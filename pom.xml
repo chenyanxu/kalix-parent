@@ -283,7 +283,7 @@
                                     </then>
                                 </if>
                                 <if>
-                                    <equals arg1="${project.artifactId}" arg2="framework-core-etc"/>
+                                    <equals arg1="${project.description}" arg2="ETC"/>
                                     <then>
                                         <if>
                                             <available file="${karaf.etc.path}" type="dir"></available>
