@@ -29,11 +29,14 @@ blueprint file:
                     </entry>
                 </service-properties>
             </service>
+
 ## blueprint 中使用BundleContext
+
   ### 声明
     public class Applicationconfig implements ManagedService {
         private EventAdmin eventAdmin;
         private BundleContext bundleContext;
+
   ### blueprint 使用
     <bean id="applicationconfig" class="com.kalix.framework.core.impl.web.Applicationconfig">
             <property name="bundleContext" ref="blueprintBundleContext"/>
