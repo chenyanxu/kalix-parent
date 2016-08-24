@@ -211,7 +211,7 @@
                     <debug>true</debug>
                     <optimize>true</optimize>
                     <showDeprecation>true</showDeprecation>
-                    <showWarnings>true</showWarnings>
+                    <showWarnings>false</showWarnings>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -289,7 +289,33 @@
                                             <available file="${karaf.etc.path}" type="dir"></available>
                                             <then>
                                                 <copy todir="${karaf.etc.path}">
-                                                    <fileset dir="src/main/resources"/>
+                                                    <fileset dir="src/main/resources"  includes="*.cfg">
+                                                    </fileset>
+                                                </copy>
+                                            </then>
+                                        </if>
+                                    </then>
+                                </if>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-cli</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+                                <if>
+                                    <equals arg1="${project.description}" arg2="ETC"/>
+                                    <then>
+                                        <if>
+                                            <available file="${karaf.etc.path}" type="dir"></available>
+                                            <then>
+                                                <copy todir="${karaf.etc.path}">
+                                                    <fileset dir="src/main/resources"  includes="*.cfg">
+                                                    </fileset>
                                                 </copy>
                                             </then>
                                         </if>
