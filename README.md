@@ -1,4 +1,5 @@
 # kalix-parent
+  基础核心pom文件
 ## pom.xml
 **pluginManagement**
 
