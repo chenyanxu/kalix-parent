@@ -56,7 +56,7 @@
         <build-helper-maven-plugin.version>1.10</build-helper-maven-plugin.version>
         <exec-maven-plugin.version>1.4.0</exec-maven-plugin.version>
         <hibernate3-maven-plugin.version>3.0</hibernate3-maven-plugin.version>
-        <yuicompressor-maven-plugin.version>1.4.0</yuicompressor-maven-plugin.version>
+        <yuicompressor-maven-plugin.version>1.5.1</yuicompressor-maven-plugin.version>
         <native2ascii-maven-plugin.version>1.0-beta-1</native2ascii-maven-plugin.version>
         <cglib.range>[2,3)</cglib.range>
         <!-- Aries Blueprint Versions -->
@@ -148,24 +148,6 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>${maven-dependency-plugin.version}</version>
             </plugin>
-            <!--?js?css??????-->
-            <!--<plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>yuicompressor-maven-plugin</artifactId>
-                <version>${yuicompressor-maven-plugin.version}</version>
-                <configuration>
-                    <statistics>true</statistics>
-                    <jswarn>false</jswarn>
-                    <suffix>.min</suffix>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compress</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
             <plugin>
                 <groupId>org.ops4j</groupId>
                 <artifactId>maven-pax-plugin</artifactId>
@@ -321,6 +303,18 @@
                                         </if>
                                     </then>
                                 </if>
+                                <if>
+                                    <equals arg1="${project.artifactId}" arg2="kalix-parent"/>
+                                    <then>
+                                        <if>
+                                            <available file="src/main/resources/settings.xml"/>
+                                            <then>
+                                                <copy file="src/main/resources/settings.xml"
+                                                      todir="${maven.conf.path}"/>
+                                            </then>
+                                        </if>
+                                    </then>
+                                </if>
                             </target>
                         </configuration>
                     </execution>
@@ -402,6 +396,45 @@
                             <version>${openjpa.version}</version>
                         </dependency>
                     </dependencies>
+                </plugin>
+                <plugin>
+                    <!-- YUI Compressor Maven压缩插件 -->
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>yuicompressor-maven-plugin</artifactId>
+                    <version>${yuicompressor-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compress</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!-- 读取js,css文件采用UTF-8编码 -->
+                        <encoding>UTF-8</encoding>
+                        <!-- 不显示js可能的错误 -->
+                        <jswarn>false</jswarn>
+                        <!-- 若存在已压缩的文件，会先对比源文件是否有改动  有改动便压缩，无改动就不压缩 -->
+                        <force>false</force>
+                        <!-- 在指定的列号后插入新行 -->
+                        <linebreakpos>-1</linebreakpos>
+                        <!-- 压缩之前先执行聚合文件操作 -->
+                        <preProcessAggregates>false</preProcessAggregates>
+                        <!-- 压缩后保存文件后缀 无后缀 -->
+                        <nosuffix>true</nosuffix>
+                        <!--<suffix>.min</suffix>-->
+                        <!-- 源目录，即需压缩的根目录 -->
+                        <sourceDirectory>src/main/webapp</sourceDirectory>
+                        <outputDirectory>target/classes/min</outputDirectory>
+                        <!-- 压缩js和css文件 -->
+                        <includes>
+                            <include>**/*.js</include>
+                            <include>**/*.css</include>
+                        </includes>
+                        <excludes>
+                            <exclude>resources/**/*.*</exclude>
+                        </excludes>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
