@@ -11,6 +11,7 @@
 
     <properties>
         <globle.version>1.0.0-SNAPSHOT</globle.version>
+        <rest.pretty>false</rest.pretty>
         <!--some example OSGi runtime properties-->
         <org.osgi.service.http.port>8080</org.osgi.service.http.port>
         <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
@@ -471,6 +472,12 @@
         </site>
     </distributionManagement>
     <profiles>
+        <profile>
+            <id>develop-mode</id>
+            <properties>
+                <rest.pretty>true</rest.pretty>
+            </properties>
+        </profile>
         <profile>
             <id>maven-path-win</id>
             <activation>
