@@ -19,7 +19,7 @@
         <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
         <org.osgi.enterprise.version>5.0.0</org.osgi.enterprise.version>
 
-        <karaf.version>4.0.5</karaf.version>
+        <karaf.version>4.0.7</karaf.version>
         <karaf.etc.path>${karaf.path}/etc</karaf.etc.path>
         <karaf.bin.path>${karaf.path}/bin</karaf.bin.path>
         <karaf.deploy.path>${karaf.path}/deploy</karaf.deploy.path>
@@ -40,7 +40,7 @@
         <!--plugin version-->
         <!--<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>-->
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
-        <maven-bundle-plugin.version>3.0.1</maven-bundle-plugin.version>
+        <maven-bundle-plugin.version>3.2.0</maven-bundle-plugin.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
