@@ -11,7 +11,6 @@
 
     <properties>
         <globle.version>1.0.0-SNAPSHOT</globle.version>
-        <rest.pretty>false</rest.pretty>
         <!--some example OSGi runtime properties-->
         <org.osgi.service.http.port>8080</org.osgi.service.http.port>
         <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
@@ -471,15 +470,22 @@
             <url>dav:http://content-repository/sites/${project.groupId}/${project.artifactId}/${project.version}</url>
         </site>
     </distributionManagement>
+
     <profiles>
         <profile>
-            <id>develop-mode</id>
+            <id>jdk-1.8</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <jdk>1.8</jdk>
+            </activation>
             <properties>
-                <rest.pretty>true</rest.pretty>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
             </properties>
         </profile>
         <profile>
-            <id>maven-path-win</id>
+            <id>windows-win</id>
             <activation>
                 <os>
                     <family>Windows</family>
@@ -487,10 +493,27 @@
             </activation>
             <properties>
                 <maven.path>d:/java-develop/tools/apache-maven-${maven.version}</maven.path>
+                <karaf.path>d:/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
+                <rest.pretty>true</rest.pretty>
             </properties>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>net.alchim31.maven</groupId>
+                            <artifactId>yuicompressor-maven-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <phase>not_run</phase>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
         </profile>
         <profile>
-            <id>maven-path-linux</id>
+            <id>linux-env</id>
             <activation>
                 <os>
                     <family>Linux</family>
@@ -498,7 +521,24 @@
             </activation>
             <properties>
                 <maven.path>~/java-develop/tools/apache-maven-${maven.version}</maven.path>
+                <karaf.path>~/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
+                <rest.pretty>false</rest.pretty>
             </properties>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>net.alchim31.maven</groupId>
+                            <artifactId>yuicompressor-maven-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <phase>install</phase>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
         </profile>
     </profiles>
 </project>
