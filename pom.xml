@@ -485,7 +485,7 @@
             </properties>
         </profile>
         <profile>
-            <id>windows-win</id>
+            <id>windows-env</id>
             <activation>
                 <os>
                     <family>Windows</family>
