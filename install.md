@@ -5,7 +5,6 @@
    - kalix-parent
    - middleware-parent
    - admin-parent
-   - admin-parent
    - oa-parent
    - common-parent
    - schedule-parent
