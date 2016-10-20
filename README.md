@@ -15,9 +15,9 @@
 
 ## OSGI
 
-> OSGi 是一门非常成熟的技术，因为它已经存在16年了，OSGi 联盟负责管理并制定相关的规范。该联盟在 2009 年 9 月发布了最新版的 OSGi Service Platform V4.2 规范，在企业专家组的大力推动下，新的 Service Compendium V4.2 规范中引入了 Blueprint Services, Remote Services, Bundle Tracker 等用以支持企业级应用的新标准，从而为 OSGi Service Platform 进军企业级市场奠定了基础。
-
 ![OSGI struct](https://github.com/chenyanxu/kalix-parent/blob/master/src/image/osgi.jpg)
+
+> OSGi 是一门非常成熟的技术，因为它已经存在16年了，OSGi 联盟负责管理并制定相关的规范。该联盟在 2009 年 9 月发布了最新版的 OSGi Service Platform V4.2 规范，在企业专家组的大力推动下，新的 Service Compendium V4.2 规范中引入了 Blueprint Services, Remote Services, Bundle Tracker 等用以支持企业级应用的新标准，从而为 OSGi Service Platform 进军企业级市场奠定了基础。
 
 ![OSGI class](https://github.com/chenyanxu/kalix-parent/blob/master/src/image/osgi-class.png)
 
@@ -37,7 +37,9 @@
 
 ![karaf架构图](https://github.com/chenyanxu/kalix-parent/blob/master/src/image/karaf.png)
 
-> Karaf是Apache旗下的一个开源项目.Karaf同时也是一个基于OSGi的运行环境,Karaf提供了一个轻量级的OSGi容器,可以用于部署各种组件,应用程序.Karaf提供了很多特性用于帮助开发者和用户更加灵活的部署应用,例如:热部署,动态配置,几种日志处理系统,本地系统集 成,可编程扩展控制台,ssh远程访问,内置安装认证机制等等.同时Karaf作为一款成熟而且优秀的OSGi运行环境以及容器已经被诸多Apache项目作为基础容器,例如:Apache Geronimo, ApacheServiceMix, Fuse ESB,由此可见Karaf在性能,功能和稳定性上都是个不错的选择。我们选择Karaf作为OSGI容器，所有的应用都运行其上。
+> Karaf是Apache旗下的一个开源项目.Karaf同时也是一个基于OSGi的运行环境,Karaf提供了一个轻量级的OSGi容器,可以用于部署各种组件,应用程序.Karaf提供了很多特性用于帮助开发者和用户更加灵活的部署应用,例如:热部署,动态配置,几种日志处理系统,本地系统集 成,可编程扩展控制台,ssh远程访问,内置安装认证机制等等.同时Karaf作为一款成熟而且优秀的OSGi运行环境以及容器已经被诸多Apache项目作为基础容器,例如:Apache Geronimo, ApacheServiceMix, Fuse ESB,由此可见Karaf在性能,功能和稳定性上都是个不错的选择。
+
+> 我们选择Karaf作为OSGI容器，所有的应用都运行其上。
 
 ##　Apache Shrio
 
@@ -45,7 +47,6 @@
 
 > Apache Shiro（日语“堡垒（Castle）”的意思）是一个强大易用的Java安全框架，提供了认证、授权、加密和会话管理功能，可为任何应用提供安全保障 - 从命令行应用、移动应用到大型网络及企业应用。
   Shiro为解决下列问题（应用安全的四要素）提供了保护应用的API：
-
 * 认证 - 用户身份识别，常被称为用户“登录”；
 * 授权 - 访问控制；
 * 密码加密 - 保护或隐藏数据防止被偷窥；
@@ -84,22 +85,21 @@
 > Camel提供的基于规则的路由(Routing)引擎，可以使用Camel定义的DSL语言，方便的定义出各种Routing。
 
 > 如下例：
-
 ```java
 from(“file://xxxx").to("activemq://xxxx")
 // 将某文件，读入并写入到ActiveMQ的JMS中。
 ```
-> 我们使用Camel作为数据交换的框架。
+> 我们使用Camel作为数据交换的框架,并使用其REST DSL作为rest服务的发布。
 
 ## Activiti
 
 > Activiti项目是一项新的基于Apache许可的开源BPM平台，从基础开始构建，旨在提供支持新的BPMN 2.0标准，包括支持对象管理组（OMG），面对新技术的机遇，诸如互操作性和云架构，提供技术实现。 Activiti将是一种轻量级，可嵌入的BPM引擎，而且还设计适用于可扩展的云架构。 Activiti将提供宽松的Apache许可2.0，以便这个项目可以广泛被使用，同时促进Activiti BPM引擎和的BPMN 2.0的匹配，该项目现正由OMG通过标准审定。
-> 我们使用Activiti作为我们的工作流引擎。
+
+> 我们使用Activiti作为我们的工作流引擎，并做了自己的封装。
 
 ## CouchDB
 > CouchDB 是一个开源的面向文档的数据库管理系统，可以通过 RESTful JavaScript Object Notation (JSON) API 访问。术语 “Couch” 是 “Cluster Of Unreliable Commodity Hardware” 的首字母缩写，它反映了 CouchDB 的目标具有高度可伸缩性，提供了高可用性和高可靠性，即使运行在容易出现故障的硬件上也是如此。
 > 特点：
-
 * CouchDB是分布式的数据库，他可以把存储系统分布到n台物理的节点上面，并且很好的协调和同步节点之间的数据读写一致性。这当然也得靠Erlang无与伦比的并发特性才能做到。对于基于web的大规模应用文档应用，分布式可以让它不必像传统的关系数据库那样分库拆表，在应用代码层进行大量的改动。
 * CouchDB是面向文档的数据库，存储半结构化的数据，比较类似lucene的index结构，特别适合存储文档，因此很适合CMS，电话本，地址本等应用，在这些应用场合，文档数据库要比关系数据库更加方便，性能更好。
 * CouchDB支持REST API，可以让用户使用JavaScript来操作CouchDB数据库，也可以用JavaScript编写查询语句，我们可以想像一下，用AJAX技术结合CouchDB开发出来的CMS系统会是多么的简单和方便。
@@ -110,10 +110,10 @@ from(“file://xxxx").to("activemq://xxxx")
 
 > Redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set --有序集合)和hash（哈希类型）。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，redis支持各种不同方式的排序。与memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。
 
-> Redis 是一个高性能的key-value数据库。 redis的出现，很大程度补偿了memcached这类key/value存储的不足，在部 分场合可以对关系数据库起到很好的补充作用。它提供了Java，C/C++，C#，PHP，JavaScript，Perl，Object-C，Python，Ruby，Erlang等客户端，使用很方便。
+> Redis是一个高性能的key-value数据库。 redis的出现，很大程度补偿了memcached这类key/value存储的不足，在部分场合可以对关系数据库起到很好的补充作用。它提供了Java，C/C++，C#，PHP，JavaScript，Perl，Object-C，Python，Ruby，Erlang等客户端，使用很方便。
 
 > Redis支持主从同步。数据可以从主服务器向任意数量的从服务器上同步，从服务器可以是关联其他从服务器的主服务器。这使得Redis可执行单层树复制。存盘可以有意无意的对数据进行写操作。由于完全实现了发布/订阅机制，使得从数据库在任何地方同步树时，可订阅一个频道并接收主服务器完整的消息发布记录。同步对读取操作的可扩展性和数据冗余很有帮助。
 
-> 我们使用Redis作为我们的cache存储。
+> 我们使用Redis作为cache存储以及shiro的session存储。
 
 
