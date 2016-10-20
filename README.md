@@ -18,3 +18,17 @@
 > OSGi 是一门非常成熟的技术，因为它已经存在16年了，OSGi 联盟负责管理并制定相关的规范。该联盟在 2009 年 9 月发布了最新版的 OSGi Service Platform V4.2 规范，在企业专家组的大力推动下，新的 Service Compendium V4.2 规范中引入了 Blueprint Services, Remote Services, Bundle Tracker 等用以支持企业级应用的新标准，从而为 OSGi Service Platform 进军企业级市场奠定了基础。
 
 ![OSGI struct](https://github.com/chenyanxu/kalix-parent/blob/master/src/image/osgi.jpg)
+
+![OSGI class](https://github.com/chenyanxu/kalix-parent/blob/master/src/image/osgi-class.png)
+
+> 通过OSGI类图，我们可以看到，与传统开发相比较，service消费类直接依赖于service接口类，完全不知道具体实现类的存在，这样就做到了真正的面向接口编程。service监听类负责osgi服务的监听。
+  OSGI带给我们的好处：
+* 模块化开发（bundle）
+* 管理依赖（import和export）
+* 真正的面向接口编程
+* 版本化的bundle
+* 动态部署
+
+> OSGI和传统开发的比较
+
+![OSGI compare](https://github.com/chenyanxu/kalix-parent/blob/master/src/image/osgi-compare.png)
