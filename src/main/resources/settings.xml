@@ -78,7 +78,7 @@
             <id>nexus2-remote</id>
             <mirrorOf>*</mirrorOf>
             <name>Nexus Mirror Remote</name>
-            <url>http://172.18.82.10:8081/nexus/content/groups/public/</url>
+            <url>http://172.18.82.12:8081/nexus/content/groups/public/</url>
         </mirror>
     </mirrors>
     <profiles>
