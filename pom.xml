@@ -6,11 +6,19 @@
     <groupId>com.kalix</groupId>
     <artifactId>kalix-parent</artifactId>
     <name>Kalix Parent</name>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0-RELEASE</version>
     <packaging>pom</packaging>
 
     <properties>
-        <globle.version>1.0.0-SNAPSHOT</globle.version>
+        <!--<globle.version>1.0.0-RELEASE</globle.version>-->
+        <!--child project version-->
+        <project.framework.version>1.0.1-RELEASE</project.framework.version>
+        <project.admin.version>1.0.1-RELEASE</project.admin.version>
+        <project.middleware.version>1.0.1-RELEASE</project.middleware.version>
+        <project.common.version>1.0.1-RELEASE</project.common.version>
+        <project.oa.version>1.0.1-RELEASE</project.oa.version>
+        <project.schedule.version>1.0.1-RELEASE</project.schedule.version>
+        <project.tools.version>1.0.1-RELEASE</project.tools.version>
         <!--some example OSGi runtime properties-->
         <org.osgi.service.http.port>8080</org.osgi.service.http.port>
         <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
