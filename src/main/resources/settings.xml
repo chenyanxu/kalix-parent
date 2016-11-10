@@ -36,6 +36,11 @@
             <username>admin</username>
             <password>admin123</password>
         </server>
+        <server>
+            <id>github.com</id>
+            <username></username>
+            <password></password>
+        </server>
     </servers>
 
     <!-- mirrors
@@ -74,12 +79,12 @@
             <!--<name>Nexus Mirror Local</name>-->
             <!--<url>http://localhost:8081/nexus/content/groups/public/</url>-->
         <!--</mirror>-->
-        <mirror>
-            <id>nexus2-remote</id>
-            <mirrorOf>*</mirrorOf>
-            <name>Nexus Mirror Remote</name>
-            <url>http://172.18.82.12:8081/nexus/content/groups/public/</url>
-        </mirror>
+        <!--<mirror>-->
+            <!--<id>nexus2-remote</id>-->
+            <!--<mirrorOf>*</mirrorOf>-->
+            <!--<name>Nexus Mirror Remote</name>-->
+            <!--<url>http://172.18.82.12:8081/nexus/content/groups/public/</url>-->
+        <!--</mirror>-->
     </mirrors>
     <profiles>
         <!-- profile
@@ -154,7 +159,7 @@
           <activeProfile>anotherAlwaysActiveProfile</activeProfile>
         </activeProfiles>
         -->
-        <!--profile>
+        <profile>
             <id>nexus-local</id>
             <repositories>
                 <repository>
@@ -165,7 +170,6 @@
                     </snapshots>
                 </repository>
             </repositories>
-
             <pluginRepositories>
                 <pluginRepository>
                     <snapshots>
@@ -176,7 +180,29 @@
                     <url>http://localhost:8081/nexus/content/groups/public</url>
                 </pluginRepository>
             </pluginRepositories>
-        </profile>-->
+        </profile>
+        <profile>
+            <id>nexus-remote</id>
+            <repositories>
+                <repository>
+                    <id>remote-nexus</id>
+                    <url>http://172.18.82.12:8081/nexus/content/groups/public</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>remote-nexus</id>
+                    <name>Maven Plugin Repository</name>
+                    <url>http://172.18.82.12:8081/nexus/content/groups/public</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
          <!--<profile>-->
             <!--<id>jdk-1.8</id>-->
             <!--<activation>-->
@@ -238,34 +264,9 @@
                 <!--<db.password>1234</db.password>-->
             <!--</properties>-->
         <!--</profile>-->
-         <!--<profile>-->
-            <!--<id>nexus-remote</id>-->
-            <!--<repositories>-->
-                <!--<repository>-->
-                    <!--<id>remote-nexus</id>-->
-                    <!--<url>http://nexus3.kalix.com/repository/maven-public/</url>-->
-                    <!--&lt;!&ndash;<url>http://localhost:8081/repository/maven-public/</url>&ndash;&gt;-->
-                    <!--<snapshots>-->
-                        <!--<enabled>true</enabled>-->
-                    <!--</snapshots>-->
-                <!--</repository>-->
-            <!--</repositories>-->
-            <!--<pluginRepositories>-->
-                <!--<pluginRepository>-->
-                    <!--<snapshots>-->
-                        <!--<enabled>true</enabled>-->
-                    <!--</snapshots>-->
-                    <!--<id>remote-nexus</id>-->
-                    <!--<name>Maven Plugin Repository</name>-->
-                    <!--<url>http://nexus3.kalix.com/repository/maven-public/</url>-->
-                    <!--&lt;!&ndash;<url>http://localhost:8081/repository/maven-public/</url>&ndash;&gt;-->
-                <!--</pluginRepository>-->
-            <!--</pluginRepositories>-->
-        <!--</profile>-->
-
     </profiles>
-    <!--<activeProfiles>-->
-        <!--&lt;!&ndash;<activeProfile>nexus-remote</activeProfile>&ndash;&gt;-->
+    <activeProfiles>
+        <activeProfile>nexus-remote</activeProfile>
         <!--<activeProfile>production-postgresql</activeProfile>-->
-    <!--</activeProfiles>-->
+    </activeProfiles>
 </settings>
