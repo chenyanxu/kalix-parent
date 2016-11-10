@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kalix</groupId>
     <artifactId>kalix-parent</artifactId>
     <name>Kalix Parent</name>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <scm>
         <connection>scm:git:https://github.com/chenyanxu/kalix-parent.git</connection>
         <developerConnection>scm:git:https://github.com/chenyanxu/kalix-parent.git</developerConnection>
-      <tag>kalix-parent-1.0.0</tag>
-  </scm>
+    </scm>
 
     <properties>
         <!--<globle.version>1.0.0-RELEASE</globle.version>-->
@@ -248,17 +248,18 @@
                         </goals>
                         <configuration>
                             <target>
-                                <taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+                                <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
                                 <if>
-                                    <equals arg1="${project.packaging}" arg2="bundle" />
+                                    <equals arg1="${project.packaging}" arg2="bundle"/>
                                     <then>
                                         <if>
-                                            <available file="target/${project.artifactId}-${project.version}.jar" />
+                                            <available file="target/${project.artifactId}-${project.version}.jar"/>
                                             <then>
                                                 <if>
-                                                    <available file="${karaf.deploy.path}" type="dir" />
+                                                    <available file="${karaf.deploy.path}" type="dir"></available>
                                                     <then>
-                                                        <copy file="target/${project.artifactId}-${project.version}.jar" todir="${karaf.deploy.path}" />
+                                                        <copy file="target/${project.artifactId}-${project.version}.jar"
+                                                              todir="${karaf.deploy.path}"/>
                                                     </then>
                                                 </if>
                                             </then>
@@ -266,24 +267,25 @@
                                     </then>
                                 </if>
                                 <if>
-                                    <equals arg1="${project.artifactId}" arg2="kalix-parent" />
+                                    <equals arg1="${project.artifactId}" arg2="kalix-parent"/>
                                     <then>
                                         <if>
-                                            <available file="src/main/resources/settings.xml" />
+                                            <available file="src/main/resources/settings.xml"/>
                                             <then>
-                                                <copy file="src/main/resources/settings.xml" todir="${maven.conf.path}" />
+                                                <copy file="src/main/resources/settings.xml"
+                                                      todir="${maven.conf.path}"/>
                                             </then>
                                         </if>
                                     </then>
                                 </if>
                                 <if>
-                                    <equals arg1="${project.description}" arg2="ETC" />
+                                    <equals arg1="${project.description}" arg2="ETC"/>
                                     <then>
                                         <if>
-                                            <available file="${karaf.etc.path}" type="dir" />
+                                            <available file="${karaf.etc.path}" type="dir"></available>
                                             <then>
                                                 <copy todir="${karaf.etc.path}">
-                                                    <fileset dir="src/main/resources" includes="*.cfg">
+                                                    <fileset dir="src/main/resources"  includes="*.cfg">
                                                     </fileset>
                                                 </copy>
                                             </then>
@@ -300,15 +302,15 @@
                         </goals>
                         <configuration>
                             <target>
-                                <taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+                                <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
                                 <if>
-                                    <equals arg1="${project.description}" arg2="ETC" />
+                                    <equals arg1="${project.description}" arg2="ETC"/>
                                     <then>
                                         <if>
-                                            <available file="${karaf.etc.path}" type="dir" />
+                                            <available file="${karaf.etc.path}" type="dir"></available>
                                             <then>
                                                 <copy todir="${karaf.etc.path}">
-                                                    <fileset dir="src/main/resources" includes="*.cfg">
+                                                    <fileset dir="src/main/resources"  includes="*.cfg">
                                                     </fileset>
                                                 </copy>
                                             </then>
@@ -316,12 +318,13 @@
                                     </then>
                                 </if>
                                 <if>
-                                    <equals arg1="${project.artifactId}" arg2="kalix-parent" />
+                                    <equals arg1="${project.artifactId}" arg2="kalix-parent"/>
                                     <then>
                                         <if>
-                                            <available file="src/main/resources/settings.xml" />
+                                            <available file="src/main/resources/settings.xml"/>
                                             <then>
-                                                <copy file="src/main/resources/settings.xml" todir="${maven.conf.path}" />
+                                                <copy file="src/main/resources/settings.xml"
+                                                      todir="${maven.conf.path}"/>
                                             </then>
                                         </if>
                                     </then>
@@ -359,7 +362,7 @@
                 <version>${hibernate3-maven-plugin.version}</version>
                 <configuration>
                     <hibernatetool>
-                        <jpaconfiguration />
+                        <jpaconfiguration/>
                     </hibernatetool>
                 </configuration>
             </plugin>
