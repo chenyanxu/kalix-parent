@@ -212,7 +212,3 @@ The setting.xml file will auto deploy to ${maven.path}/conf if the maven.path co
 	        <karaf.path>d:/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
 	    </properties>
 	</profile>
-
-## 总体架构图
-
-![Extensions Tab Screenshot](https://github.com/chenyanxu/kalix-parent/blob/master/construct.png)
