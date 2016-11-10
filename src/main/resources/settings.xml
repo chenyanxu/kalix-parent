@@ -38,7 +38,7 @@
         </server>
         <server>
             <id>github.com</id>
-            <username></username>
+            <username>1</username>
             <password></password>
         </server>
     </servers>
@@ -159,28 +159,28 @@
           <activeProfile>anotherAlwaysActiveProfile</activeProfile>
         </activeProfiles>
         -->
-        <profile>
-            <id>nexus-local</id>
-            <repositories>
-                <repository>
-                    <id>local-nexus</id>
-                    <url>http://localhost:8081/nexus/content/groups/public</url>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                    <id>local-nexus</id>
-                    <name>Maven Plugin Repository</name>
-                    <url>http://localhost:8081/nexus/content/groups/public</url>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
+        <!--<profile>-->
+            <!--<id>nexus-local</id>-->
+            <!--<repositories>-->
+                <!--<repository>-->
+                    <!--<id>local-nexus</id>-->
+                    <!--<url>http://localhost:8081/nexus/content/groups/public</url>-->
+                    <!--<snapshots>-->
+                        <!--<enabled>false</enabled>-->
+                    <!--</snapshots>-->
+                <!--</repository>-->
+            <!--</repositories>-->
+            <!--<pluginRepositories>-->
+                <!--<pluginRepository>-->
+                    <!--<snapshots>-->
+                        <!--<enabled>false</enabled>-->
+                    <!--</snapshots>-->
+                    <!--<id>local-nexus</id>-->
+                    <!--<name>Maven Plugin Repository</name>-->
+                    <!--<url>http://localhost:8081/nexus/content/groups/public</url>-->
+                <!--</pluginRepository>-->
+            <!--</pluginRepositories>-->
+        <!--</profile>-->
         <profile>
             <id>nexus-remote</id>
             <repositories>
