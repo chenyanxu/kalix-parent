@@ -6,7 +6,7 @@
     <groupId>com.kalix</groupId>
     <artifactId>kalix-parent</artifactId>
     <name>Kalix Parent</name>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <scm>
@@ -17,13 +17,13 @@
     <properties>
         <!--<globle.version>1.0.0-RELEASE</globle.version>-->
         <!--child project version-->
-        <project.framework.version>1.0.1-RELEASE</project.framework.version>
-        <project.admin.version>1.0.1-RELEASE</project.admin.version>
-        <project.middleware.version>1.0.1-RELEASE</project.middleware.version>
-        <project.common.version>1.0.1-RELEASE</project.common.version>
-        <project.oa.version>1.0.1-RELEASE</project.oa.version>
-        <project.schedule.version>1.0.1-RELEASE</project.schedule.version>
-        <project.tools.version>1.0.1-RELEASE</project.tools.version>
+        <project.framework.version>1.0.1-SNAPSHOT</project.framework.version>
+        <project.admin.version>1.0.1-SNAPSHOT</project.admin.version>
+        <project.middleware.version>1.0.1-SNAPSHOT</project.middleware.version>
+        <project.common.version>1.0.1-SNAPSHOT</project.common.version>
+        <project.oa.version>1.0.1-SNAPSHOT</project.oa.version>
+        <project.schedule.version>1.0.1-SNAPSHOT</project.schedule.version>
+        <project.tools.version>1.0.1-SNAPSHOT</project.tools.version>
         <!--some example OSGi runtime properties-->
         <org.osgi.service.http.port>8080</org.osgi.service.http.port>
         <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
@@ -87,7 +87,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- fabric8 property-->
-        <fabric8.maven.plugin.version>3.0.33</fabric8.maven.plugin.version>
+        <fabric8.maven.plugin.version>3.1.92</fabric8.maven.plugin.version>
         <fabric8.version>2.2.142</fabric8.version>
 
         <!--httpclient property-->
@@ -266,18 +266,18 @@
                                         </if>
                                     </then>
                                 </if>
-                                <if>
-                                    <equals arg1="${project.artifactId}" arg2="kalix-parent"/>
-                                    <then>
-                                        <if>
-                                            <available file="src/main/resources/settings.xml"/>
-                                            <then>
-                                                <copy file="src/main/resources/settings.xml"
-                                                      todir="${maven.conf.path}"/>
-                                            </then>
-                                        </if>
-                                    </then>
-                                </if>
+                                <!--<if>-->
+                                    <!--<equals arg1="${project.artifactId}" arg2="kalix-parent"/>-->
+                                    <!--<then>-->
+                                        <!--<if>-->
+                                            <!--<available file="src/main/resources/settings.xml"/>-->
+                                            <!--<then>-->
+                                                <!--<copy file="src/main/resources/settings.xml"-->
+                                                      <!--todir="${maven.conf.path}"/>-->
+                                            <!--</then>-->
+                                        <!--</if>-->
+                                    <!--</then>-->
+                                <!--</if>-->
                                 <if>
                                     <equals arg1="${project.description}" arg2="ETC"/>
                                     <then>
@@ -460,35 +460,35 @@
         </pluginManagement>
     </build>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
-                <configuration>
-                    <detectLinks>true</detectLinks>
-                    <detectJavaApiLink>true</detectJavaApiLink>
-                    <linksource>true</linksource>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
+    <!--<reporting>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+                <!--<version>2.10.3</version>-->
+                <!--<configuration>-->
+                    <!--<detectLinks>true</detectLinks>-->
+                    <!--<detectJavaApiLink>true</detectJavaApiLink>-->
+                    <!--<linksource>true</linksource>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</reporting>-->
     <distributionManagement>
         <repository>
             <id>private-nexus-library-releases</id>
             <name>private-nexus-library-releases</name>
-            <url>http://172.18.82.12:8081/nexus/content/repositories/releases/</url>
+            <url>http://localhost:8081/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>private-nexus-library-snapshots</id>
             <name>private-nexus-library-snapshots</name>
-            <url>http://172.18.82.12:8081/nexus/content/repositories/snapshots/</url>
+            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
-        <site>
-            <id>website</id>
-            <url>dav:http://content-repository/sites/${project.groupId}/${project.artifactId}/${project.version}</url>
-        </site>
+        <!--<site>-->
+            <!--<id>website</id>-->
+            <!--<url>dav:http://content-repository/sites/${project.groupId}/${project.artifactId}/${project.version}</url>-->
+        <!--</site>-->
     </distributionManagement>
 
     <profiles>
