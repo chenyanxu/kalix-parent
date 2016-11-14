@@ -285,7 +285,7 @@
                                             <available file="${karaf.etc.path}" type="dir"></available>
                                             <then>
                                                 <copy todir="${karaf.etc.path}">
-                                                    <fileset dir="src/main/resources"  includes="*.cfg">
+                                                    <fileset dir="target/classes"  includes="*.cfg">
                                                     </fileset>
                                                 </copy>
                                             </then>
@@ -310,7 +310,7 @@
                                             <available file="${karaf.etc.path}" type="dir"></available>
                                             <then>
                                                 <copy todir="${karaf.etc.path}">
-                                                    <fileset dir="src/main/resources"  includes="*.cfg">
+                                                    <fileset dir="target/classes"  includes="*.cfg">
                                                     </fileset>
                                                 </copy>
                                             </then>
