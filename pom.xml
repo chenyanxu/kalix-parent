@@ -92,6 +92,8 @@
 
         <!--httpclient property-->
         <httpclient.version>4.5.2</httpclient.version>
+        <!--swagger property-->
+        <swagger.annotations.version>1.5.10</swagger.annotations.version>
     </properties>
 
     <dependencyManagement>
