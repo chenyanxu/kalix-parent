@@ -24,7 +24,6 @@
         <project.oa.version>1.0.1-SNAPSHOT</project.oa.version>
         <project.schedule.version>1.0.1-SNAPSHOT</project.schedule.version>
         <project.tools.version>1.0.1-SNAPSHOT</project.tools.version>
-        <project.ar.version>1.0.0-SNAPSHOT</project.ar.version>
         <!--some example OSGi runtime properties-->
         <org.osgi.service.http.port>8080</org.osgi.service.http.port>
         <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
@@ -32,7 +31,7 @@
         <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
         <org.osgi.enterprise.version>5.0.0</org.osgi.enterprise.version>
 
-        <karaf.version>4.0.7</karaf.version>
+        <karaf.version>4.0.8</karaf.version>
         <karaf.etc.path>${karaf.path}/etc</karaf.etc.path>
         <karaf.bin.path>${karaf.path}/bin</karaf.bin.path>
         <karaf.deploy.path>${karaf.path}/deploy</karaf.deploy.path>
@@ -518,7 +517,6 @@
                 <maven.path>d:/java-develop/tools/apache-maven-${maven.version}</maven.path>
                 <karaf.path>d:/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
                 <rest.pretty>true</rest.pretty>
-                <webcontext.deploy>false</webcontext.deploy>
             </properties>
             <build>
                 <pluginManagement>
@@ -547,7 +545,6 @@
                 <maven.path>~/java-develop/tools/apache-maven-${maven.version}</maven.path>
                 <karaf.path>~/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
                 <rest.pretty>false</rest.pretty>
-                <webcontext.deploy>true</webcontext.deploy>
             </properties>
             <build>
                 <pluginManagement>
