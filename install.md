@@ -3,11 +3,13 @@
 2. 网页访问 https://github.com/chenyanxu/admin-parent，
    顺序是：
    - kalix-parent
+   - framework-parent
    - middleware-parent
    - admin-parent
    - oa-parent
    - common-parent
    - schedule-parent
+   - tools-parent
    依次下载和编译。
 3. 下载过程
    以oa-parent为例，打开 https://github.com/chenyanxu/oa-parent，点击clone，复制到剪贴板。桌面 IntelliJ IDEA 15.0.2 点击checkout from Version Control，打开github，打开 https://github.com/chenyanxu/oa-parent.git，提示框 点击NO。
