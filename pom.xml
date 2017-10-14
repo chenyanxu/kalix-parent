@@ -33,7 +33,7 @@
         <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
         <org.osgi.enterprise.version>5.0.0</org.osgi.enterprise.version>
 
-        <karaf.version>4.1.1</karaf.version>
+        <karaf.version>4.1.2</karaf.version>
         <karaf.etc.path>${karaf.path}/etc</karaf.etc.path>
         <karaf.bin.path>${karaf.path}/bin</karaf.bin.path>
         <karaf.deploy.path>${karaf.path}/deploy</karaf.deploy.path>
