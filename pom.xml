@@ -254,9 +254,23 @@
                         <configuration>
                             <target>
                                 <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
-                                <copy file="target/${project.artifactId}-${project.version}.jar"
-                                      todir="${karaf.deploy.path}"/>
-
+                                <if>
+                                    <equals arg1="${project.packaging}" arg2="bundle"/>
+                                    <then>
+                                        <if>
+                                            <available file="target/${project.artifactId}-${project.version}.jar"/>
+                                            <then>
+                                                <if>
+                                                    <available file="${karaf.deploy.path}" type="dir"></available>
+                                                    <then>
+                                                        <copy file="target/${project.artifactId}-${project.version}.jar"
+                                                              todir="${karaf.deploy.path}"/>
+                                                    </then>
+                                                </if>
+                                            </then>
+                                        </if>
+                                    </then>
+                                </if>
                                 <!--<if>-->
                                     <!--<equals arg1="${project.artifactId}" arg2="kalix-parent"/>-->
                                     <!--<then>-->
