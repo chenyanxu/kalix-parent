@@ -546,8 +546,8 @@
                 </os>
             </activation>
             <properties>
-                <maven.path>~/java-develop/tools/apache-maven-${maven.version}</maven.path>
-                <karaf.path>~/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
+                <maven.path>/root/java-develop/tools/apache-maven-${maven.version}</maven.path>
+                <karaf.path>/root/java-develop/tools/apache-karaf-${karaf.version}</karaf.path>
                 <rest.pretty>false</rest.pretty>
                 <webcontext.deploy>true</webcontext.deploy>
             </properties>
