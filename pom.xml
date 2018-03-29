@@ -28,6 +28,8 @@
         <project.research.version>1.0.0-SNAPSHOT</project.research.version>
         <project.art.version>1.0.0-SNAPSHOT</project.art.version>
         <project.monitor.version>1.0.0-SNAPSHOT</project.monitor.version>
+        <project.integration.version>1.0.0-SNAPSHOT</project.integration.version>
+        <project.educational.version>1.0.0-SNAPSHOT</project.educational.version>
         <!--some example OSGi runtime properties-->
         <org.osgi.service.http.port>8080</org.osgi.service.http.port>
         <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
