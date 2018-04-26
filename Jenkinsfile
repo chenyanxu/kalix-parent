@@ -8,6 +8,11 @@ pipeline {
         sh "mvn install deploy"
       }
     }
+    stage('Deploy App') {
+          steps {
+            sh "mvn deploy"
+          }
+        }
 //    stage('Create Image Builder') {
 //      when {
 //        expression {
