@@ -484,13 +484,13 @@
     <!--</reporting>-->
     <distributionManagement>
         <repository>
-            <id>private-nexus-library-releases</id>
-            <name>private-nexus-library-releases</name>
+            <id>nexus-releases</id>
+            <name>releases</name>
             <url>http://nexus/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
-            <id>private-nexus-library-snapshots</id>
-            <name>private-nexus-library-snapshots</name>
+            <id>nexus-snapshots</id>
+            <name>snapshots</name>
             <url>http://nexus/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
         <!--<site>-->

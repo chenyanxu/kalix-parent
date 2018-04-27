@@ -27,12 +27,12 @@
 
     <servers>
         <server>
-            <id>private-nexus-library-releases</id>
+            <id>nexus-releases</id>
             <username>admin</username>
             <password>admin123</password>
         </server>
         <server>
-            <id>private-nexus-library-snapshots</id>
+            <id>nexus-snapshots</id>
             <username>admin</username>
             <password>admin123</password>
         </server>
@@ -186,12 +186,17 @@
             <repositories>
                 <repository>
                     <id>remote-nexus</id>
-                    <url>http://nexus/nexus/content/groups/public</url>
+                    <url>http://nexus/nexus/content/groups/public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
                     <snapshots>
-                        <enabled>false</enabled>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
                     </snapshots>
                 </repository>
             </repositories>
+            <!--
             <pluginRepositories>
                 <pluginRepository>
                     <snapshots>
@@ -202,6 +207,7 @@
                     <url>http://nexus/nexus/content/groups/public</url>
                 </pluginRepository>
             </pluginRepositories>
+            -->
         </profile>
          <!--<profile>-->
             <!--<id>jdk-1.8</id>-->
