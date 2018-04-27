@@ -186,7 +186,7 @@
             <repositories>
                 <repository>
                     <id>remote-nexus</id>
-                    <url>http://172.18.82.12:8081/nexus/content/groups/public</url>
+                    <url>http://nexus/nexus/content/groups/public</url>
                     <snapshots>
                         <enabled>false</enabled>
                     </snapshots>
@@ -199,7 +199,7 @@
                     </snapshots>
                     <id>remote-nexus</id>
                     <name>Maven Plugin Repository</name>
-                    <url>http://172.18.82.12:8081/nexus/content/groups/public</url>
+                    <url>http://nexus/nexus/content/groups/public</url>
                 </pluginRepository>
             </pluginRepositories>
         </profile>

@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('Build App') {
       steps {
-        sh "mvn install deploy"
+        sh "mvn install deploy -s src/main/resources/settings.xml"
       }
     }
     stage('Deploy App') {
