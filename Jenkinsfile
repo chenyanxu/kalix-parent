@@ -5,12 +5,12 @@ pipeline {
   stages {
     stage('Build App') {
       steps {
-        sh "mvn install -s Kalix-Maven-Settings"
+        sh "mvn install -s"
       }
     }
     stage('Deploy App') {
           steps {
-            sh "mvn deploy"
+            sh "mvn deploy  -s"
           }
         }
          }
