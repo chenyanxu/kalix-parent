@@ -8,11 +8,11 @@ pipeline {
         sh "mvn install deploy -s src/main/resources/settings.xml"
       }
     }
-    stage('Deploy App') {
-          steps {
-            sh "mvn deploy"
-          }
-        }
+//    stage('Deploy App') {
+//          steps {
+//            sh "mvn deploy"
+//          }
+//        }
 //    stage('Create Image Builder') {
 //      when {
 //        expression {
