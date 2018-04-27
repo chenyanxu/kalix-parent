@@ -5,12 +5,12 @@ pipeline {
   stages {
     stage('Build App') {
       steps {
-        sh "mvn install -s"
+        sh "mvn install"
       }
     }
     stage('Deploy App') {
           steps {
-            sh "mvn deploy  -s"
+            sh "mvn deploy"
           }
         }
          }
