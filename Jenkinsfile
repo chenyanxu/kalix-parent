@@ -10,7 +10,7 @@ pipeline {
     }
     stage('Deploy App') {
           steps {
-            sh "mvn deploy -s src/main/resources/settings.xml"
+            sh "mvn deploy"
           }
         }
          }
