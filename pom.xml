@@ -486,12 +486,12 @@
         <repository>
             <id>nexus-releases</id>
             <name>releases</name>
-            <url>http://nexus/nexus/content/repositories/releases/</url>
+            <url>http://nexus:8081/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus-snapshots</id>
             <name>snapshots</name>
-            <url>http://nexus/nexus/content/repositories/snapshots/</url>
+            <url>http://nexus:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
         <!--<site>-->
             <!--<id>website</id>-->

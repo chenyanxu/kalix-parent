@@ -186,7 +186,7 @@
             <repositories>
                 <repository>
                     <id>remote-nexus</id>
-                    <url>http://nexus/nexus/content/groups/public/</url>
+                    <url>http://nexus:8081/nexus/content/groups/public/</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
