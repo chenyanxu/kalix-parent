@@ -5,14 +5,16 @@ pipeline {
   stages {
     stage('Build App') {
       steps {
-        sh "mvn install deploy -s src/main/resources/settings.xml"
+        sh "mvn install -s src/main/resources/settings.xml"
       }
     }
-//    stage('Deploy App') {
-//          steps {
-//            sh "mvn deploy"
-//          }
-//        }
+    stage('Deploy App') {
+          steps {
+            sh "mvn deploy -s src/main/resources/settings.xml"
+          }
+        }
+         }
+        }
 //    stage('Create Image Builder') {
 //      when {
 //        expression {
@@ -88,5 +90,3 @@ pipeline {
 //        }
 //      }
 //    }
- }
-}
