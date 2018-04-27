@@ -79,12 +79,12 @@
             <!--<name>Nexus Mirror Local</name>-->
             <!--<url>http://localhost:8081/nexus/content/groups/public/</url>-->
         <!--</mirror>-->
-        <!--<mirror>-->
-            <!--<id>nexus2-remote</id>-->
-            <!--<mirrorOf>*</mirrorOf>-->
-            <!--<name>Nexus Mirror Remote</name>-->
-            <!--<url>http://172.18.82.12:8081/nexus/content/groups/public/</url>-->
-        <!--</mirror>-->
+        <mirror>
+            <id>nexus2-remote</id>
+            <mirrorOf>*</mirrorOf>
+            <name>Nexus Mirror Remote</name>
+            <url>http://nexus:8081/nexus/content/groups/public/</url>
+        </mirror>
     </mirrors>
     <profiles>
         <!-- profile
