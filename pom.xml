@@ -485,14 +485,14 @@
     <!--</reporting>-->
     <distributionManagement>
         <repository>
-            <id>private-nexus-library-releases</id>
-            <name>private-nexus-library-releases</name>
-            <url>http://nexus.app.kalix.com/content/repositories/releases/</url>
+            <id>nexus-releases</id>
+            <name>releases</name>
+            <url>http://nexus.apps.bogon.com/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
-            <id>private-nexus-library-snapshots</id>
-            <name>private-nexus-library-snapshots</name>
-            <url>http://nexus.app.kalix.com/nexus/content/repositories/snapshots/</url>
+            <id>nexus-snapshots</id>
+            <name>snapshots</name>
+            <url>http://nexus.apps.bogon.com/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
         <!--<site>-->
             <!--<id>website</id>-->

@@ -1,44 +1,92 @@
-#!/usr/bin/groovy
-def failIfNoTests = ""
-try {
-  failIfNoTests = ITEST_FAIL_IF_NO_TEST
-} catch (Throwable e) {
-  failIfNoTests = "false"
-}
-
-def localItestPattern = ""
-try {
-  localItestPattern = ITEST_PATTERN
-} catch (Throwable e) {
-  localItestPattern = "*KT"
-}
-
-
-def versionPrefix = ""
-try {
-  versionPrefix = VERSION_PREFIX
-} catch (Throwable e) {
-  versionPrefix = "1.0"
-}
-
-def canaryVersion = "${versionPrefix}.${env.BUILD_NUMBER}"
-def utils = new io.fabric8.Utils()
-
-node {
-  git 'https://github.com/chenyanxu/kalix-parent.git'
-
-  echo 'NOTE: running pipelines for the first time will take longer as build and base docker images are pulled onto the node'
-  kubernetes.pod('buildpod').withImage('fabric8/maven-builder')
-      .withPrivileged(true)
-      .withHostPathMount('/var/run/docker.sock','/var/run/docker.sock')
-      .withHostPathMount('/root/.mvnrepository','/var/lib/maven/repository')
-      .withEnvVar('DOCKER_CONFIG','/home/jenkins/.docker/')
-      .withSecret('jenkins-docker-cfg','/home/jenkins/.docker')
-      .withSecret('jenkins-maven-settings','/root/.m2')
-      .withServiceAccount('jenkins')
-      .inside {
-
-    stage 'Deploy'
-    sh 'mvn clean install -U org.apache.maven.plugins:maven-deploy-plugin:2.8.2:deploy'
+pipeline {
+  agent {
+    label 'maven'
   }
-}
+  stages {
+    stage('Build App') {
+      steps {
+        sh "mvn install -s src/main/resources/settings.xml"
+      }
+    }
+    stage('Deploy App') {
+          steps {
+            sh "mvn deploy -s src/main/resources/settings.xml"
+          }
+        }
+         }
+        }
+//    stage('Create Image Builder') {
+//      when {
+//        expression {
+//          openshift.withCluster() {
+//            return !openshift.selector("bc", "mapit").exists();
+//          }
+//        }
+//      }
+//      steps {
+//        script {
+//          openshift.withCluster() {
+//            openshift.newBuild("--name=mapit", "--image-stream=redhat-openjdk18-openshift:1.1", "--binary")
+//          }
+//        }
+//      }
+//    }
+//    stage('Build Image') {
+//      steps {
+//        script {
+//          openshift.withCluster() {
+//            openshift.selector("bc", "mapit").startBuild("--from-file=target/mapit-spring.jar", "--wait")
+//          }
+//        }
+//      }
+//    }
+//    stage('Promote to DEV') {
+//      steps {
+//        script {
+//          openshift.withCluster() {
+//            openshift.tag("mapit:latest", "mapit:dev")
+//          }
+//        }
+//      }
+//    }
+//    stage('Create DEV') {
+//      when {
+//        expression {
+//          openshift.withCluster() {
+//            return !openshift.selector('dc', 'mapit-dev').exists()
+//          }
+//        }
+//      }
+//      steps {
+//        script {
+//          openshift.withCluster() {
+//            openshift.newApp("mapit:latest", "--name=mapit-dev").narrow('svc').expose()
+//          }
+//        }
+//      }
+//    }
+//    stage('Promote STAGE') {
+//      steps {
+//        script {
+//          openshift.withCluster() {
+//            openshift.tag("mapit:dev", "mapit:stage")
+//          }
+//        }
+//      }
+//    }
+//    stage('Create STAGE') {
+//      when {
+//        expression {
+//          openshift.withCluster() {
+//            return !openshift.selector('dc', 'mapit-stage').exists()
+//          }
+//        }
+//      }
+//      steps {
+//        script {
+//          openshift.withCluster() {
+//            openshift.newApp("mapit:stage", "--name=mapit-stage").narrow('svc').expose()
+//          }
+//        }
+//      }
+//    }
