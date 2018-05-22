@@ -31,6 +31,7 @@
         <project.integration.version>1.0.0-SNAPSHOT</project.integration.version>
         <project.educational.version>1.0.0-SNAPSHOT</project.educational.version>
         <project.exhibition.version>1.0.0-SNAPSHOT</project.exhibition.version>
+        <project.jwt.version>1.0.0-SNAPSHOT</project.jwt.version>
         <!--some example OSGi runtime properties-->
         <org.osgi.service.http.port>8080</org.osgi.service.http.port>
         <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
