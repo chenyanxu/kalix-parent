@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -38,11 +38,12 @@
         <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
         <org.osgi.enterprise.version>5.0.0</org.osgi.enterprise.version>
 
-        <karaf.version>4.1.2</karaf.version>
+        <karaf.version>4.2.0</karaf.version>
+
         <karaf.etc.path>${karaf.path}/etc</karaf.etc.path>
         <karaf.bin.path>${karaf.path}/bin</karaf.bin.path>
         <karaf.deploy.path>${karaf.path}/deploy</karaf.deploy.path>
-        <maven.version>3.3.9</maven.version>
+        <maven.version>3.5.3</maven.version>
         <maven.conf.path>${maven.path}/conf</maven.conf.path>
         <!-- Database settings -->
         <dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>
@@ -94,9 +95,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- fabric8 property-->
-        <fabric8.maven.plugin.version>3.1.92</fabric8.maven.plugin.version>
-        <fabric8.version>2.2.142</fabric8.version>
-
+        <fabric8.version>3.0.11</fabric8.version>
+        <fabric8.maven.plugin.version>3.5.38</fabric8.maven.plugin.version>
         <!--httpclient property-->
         <httpclient.version>4.5.2</httpclient.version>
         <!--swagger property-->
@@ -421,45 +421,45 @@
                         </dependency>
                     </dependencies>
                 </plugin>
-                <!--<plugin>-->
-                <!--&lt;!&ndash; YUI Compressor Maven压缩插件 &ndash;&gt;-->
-                <!--<groupId>net.alchim31.maven</groupId>-->
-                <!--<artifactId>yuicompressor-maven-plugin</artifactId>-->
-                <!--<version>${yuicompressor-maven-plugin.version}</version>-->
-                <!--<executions>-->
-                <!--<execution>-->
-                <!--<goals>-->
-                <!--<goal>compress</goal>-->
-                <!--</goals>-->
-                <!--</execution>-->
-                <!--</executions>-->
-                <!--<configuration>-->
-                <!--&lt;!&ndash; 读取js,css文件采用UTF-8编码 &ndash;&gt;-->
-                <!--<encoding>UTF-8</encoding>-->
-                <!--&lt;!&ndash; 不显示js可能的错误 &ndash;&gt;-->
-                <!--<jswarn>false</jswarn>-->
-                <!--&lt;!&ndash; 若存在已压缩的文件，会先对比源文件是否有改动  有改动便压缩，无改动就不压缩 &ndash;&gt;-->
-                <!--<force>false</force>-->
-                <!--&lt;!&ndash; 在指定的列号后插入新行 &ndash;&gt;-->
-                <!--<linebreakpos>-1</linebreakpos>-->
-                <!--&lt;!&ndash; 压缩之前先执行聚合文件操作 &ndash;&gt;-->
-                <!--<preProcessAggregates>false</preProcessAggregates>-->
-                <!--&lt;!&ndash; 压缩后保存文件后缀 无后缀 &ndash;&gt;-->
-                <!--<nosuffix>true</nosuffix>-->
-                <!--&lt;!&ndash;<suffix>.min</suffix>&ndash;&gt;-->
-                <!--&lt;!&ndash; 源目录，即需压缩的根目录 &ndash;&gt;-->
-                <!--<sourceDirectory>src/main/webapp</sourceDirectory>-->
-                <!--<outputDirectory>target/classes/min</outputDirectory>-->
-                <!--&lt;!&ndash; 压缩js和css文件 &ndash;&gt;-->
-                <!--<includes>-->
-                <!--<include>**/*.js</include>-->
-                <!--<include>**/*.css</include>-->
-                <!--</includes>-->
-                <!--<excludes>-->
-                <!--<exclude>resources/**/*.*</exclude>-->
-                <!--</excludes>-->
-                <!--</configuration>-->
-                <!--</plugin>-->
+                <plugin>
+                    <!-- YUI Compressor Maven压缩插件 -->
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>yuicompressor-maven-plugin</artifactId>
+                    <version>${yuicompressor-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compress</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!-- 读取js,css文件采用UTF-8编码 -->
+                        <encoding>UTF-8</encoding>
+                        <!-- 不显示js可能的错误 -->
+                        <jswarn>false</jswarn>
+                        <!-- 若存在已压缩的文件，会先对比源文件是否有改动  有改动便压缩，无改动就不压缩 -->
+                        <force>false</force>
+                        <!-- 在指定的列号后插入新行 -->
+                        <linebreakpos>-1</linebreakpos>
+                        <!-- 压缩之前先执行聚合文件操作 -->
+                        <preProcessAggregates>false</preProcessAggregates>
+                        <!-- 压缩后保存文件后缀 无后缀 -->
+                        <nosuffix>true</nosuffix>
+                        <!--<suffix>.min</suffix>-->
+                        <!-- 源目录，即需压缩的根目录 -->
+                        <sourceDirectory>src/main/webapp</sourceDirectory>
+                        <outputDirectory>target/classes/min</outputDirectory>
+                        <!-- 压缩js和css文件 -->
+                        <includes>
+                            <include>**/*.js</include>
+                            <include>**/*.css</include>
+                        </includes>
+                        <excludes>
+                            <exclude>resources/**/*.*</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
