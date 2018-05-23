@@ -500,6 +500,20 @@
         <!--</site>-->
     </distributionManagement>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-kalix-cn</id>
+            <name>Maven Kalix Mirror</name>
+            <url>http://nexus.apps.bogon.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
     <profiles>
         <profile>
             <id>jdk-1.8</id>
