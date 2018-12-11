@@ -13,8 +13,8 @@ pipeline {
             sh "mvn deploy -s src/main/resources/settings.xml"
           }
         }
-         }
         }
+  }
 //    stage('Create Image Builder') {
 //      when {
 //        expression {
