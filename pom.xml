@@ -15,6 +15,8 @@
     </scm>
 
     <properties>
+        <baseline>1.0.0</baseline>
+        <baseline.skip>true</baseline.skip>
         <!--<globle.version>1.0.0-RELEASE</globle.version>-->
         <!--child project version-->
         <project.framework.version>1.0.1-SNAPSHOT</project.framework.version>
@@ -63,7 +65,7 @@
         <!--plugin version-->
         <!--<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>-->
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
-        <maven-bundle-plugin.version>3.0.1</maven-bundle-plugin.version>
+        <maven-bundle-plugin.version>3.5.1</maven-bundle-plugin.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
@@ -189,8 +191,10 @@
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <version>${maven-bundle-plugin.version}</version>
+                <inherited>true</inherited>
                 <extensions>true</extensions>
                 <configuration>
+                    <obrRepository>NONE</obrRepository>
                     <instructions>
                         <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
                         <Bundle-Version>${project.version}</Bundle-Version>
@@ -199,6 +203,19 @@
                         <_include>-osgi.bnd</_include>
                     </instructions>
                 </configuration>
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>baseline</id>-->
+                        <!--<goals>-->
+                            <!--<goal>baseline</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<comparisonVersion>${baseline}</comparisonVersion>-->
+                            <!--<skip>${baseline.skip}</skip>-->
+                            <!--<failOnError>true</failOnError>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
